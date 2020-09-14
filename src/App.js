@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter as Router, Route, Redirect, Switch, HashRouter} from 'react-router-dom';
+import {Login} from './pages/Pages';//登录组件
+import Index from './pages/IndexPages';//登录成功后跳转的框架组件
+import PrivateRoute from "./component/PrivateRoute";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className="App">
+            <HashRouter>
+                <Switch>
+                    <Route path="/" exact render={()=><Redirect to="/login"/>}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/index" render={()=>
+                        <Index>
+                            <PrivateRoute/>
+                        </Index>
+                    }/>
+                </Switch>
+            </HashRouter>
+        </div>
+      </Router>
   );
 }
 

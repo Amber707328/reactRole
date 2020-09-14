@@ -1,6 +1,7 @@
-/*.App {*/
-/*  text-align: center;*/
-/*}*/
+@import '~antd/dist/antd.css';
+.App {
+  text-align: center;
+}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +36,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+.ant-layout-header{
+  margin-bottom: 50px;
+  color: white;
 }
